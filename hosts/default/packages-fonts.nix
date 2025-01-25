@@ -52,7 +52,7 @@
     gnome-system-monitor
     grim
     gtk-engine-murrine #for gtk themes
-    hypridle # requires unstable channel
+    hypridle
     imagemagick 
     inxi
     jq
@@ -96,16 +96,16 @@
     jetbrains-mono
     font-awesome
 	  terminus_font
-    (nerdfonts.override {fonts = ["JetBrainsMono"];}) # stable banch
-    #nerd-fonts.jetbrains-mono # unstable
-    #nerd-fonts.fira-code # unstable
+    #(nerdfonts.override {fonts = ["JetBrainsMono"];}) # stable banch
+    nerd-fonts.jetbrains-mono # unstable
+    nerd-fonts.fira-code # unstable
  	];
   
   programs = {
 	  hyprland = {
       enable = true;
-		    #package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland; #hyprland-git
-		    portalPackage = pkgs.xdg-desktop-portal-hyprland;
+		    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland; #hyprland-git
+		    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland; # xdphls
   	  xwayland.enable = true;
       };
 
