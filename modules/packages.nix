@@ -67,6 +67,9 @@
       nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot
     '')
 
+    # Internet
+    firefox
+   
     # Hyprland Stuff
     hypridle
     hyprpolkitagent
@@ -115,7 +118,6 @@
     glib # for gsettings to work
     gsettings-qt
     git
-    google-chrome
     gnome-system-monitor
     fastfetch
     jq
@@ -212,9 +214,7 @@
     # Development related
     luarocks
     nh
-
-    # Internet
-    discord
+    vscode
 
     # Virtuaizaiton
     virt-viewer

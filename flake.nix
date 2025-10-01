@@ -31,8 +31,8 @@
     }:
     let
       system = "x86_64-linux";
-      host = "default";
-      username = "dwilliams";
+      host = "nixos";
+      username = "taylor";
 
       pkgs = import nixpkgs {
         inherit system;
