@@ -34,7 +34,6 @@
     environment.systemPackages = with pkgs; [
         displaylink
     ];
-
     systemd.services.displaylink-server = {
         enable = true;
         # Ensure it starts after udev has done its work

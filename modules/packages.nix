@@ -143,18 +143,10 @@
     openssl # required by Rainbow borders
     pciutils
     networkmanagerapplet
-    #nitrogen
-    #nvtopPackages.full
     pamixer
     pavucontrol
     playerctl
-    #polkit
-    # polkit_gnome
     kdePackages.polkit-kde-agent-1
-    # qt6ct
-    #qt6.qtwayland
-    #qt6Packages.qtstyleplugin-kvantum # kvantum
-    # gsettings-qt
     rofi
     slurp
     swappy
@@ -169,7 +161,6 @@
     wget
     xarchiver
     yad
-    yazi
     yt-dlp
 
     (inputs.quickshell.packages.${pkgs.system}.default)

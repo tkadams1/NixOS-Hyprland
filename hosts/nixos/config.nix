@@ -18,10 +18,11 @@ in
     ./hardware.nix
     ./users.nix
     ./displaylink.nix
+    ./wayvnc.nix
     ./packages-fonts.nix
-    ../../modules/amd-drivers.nix
-    ../../modules/nvidia-drivers.nix
-    ../../modules/nvidia-prime-drivers.nix
+    # ../../modules/amd-drivers.nix
+    # ../../modules/nvidia-drivers.nix
+    # ../../modules/nvidia-prime-drivers.nix
     ../../modules/intel-drivers.nix
     ../../modules/vm-guest-services.nix
     ../../modules/local-hardware-clock.nix
@@ -114,14 +115,14 @@ in
 
   # Extra Module Options
   drivers = {
-    amdgpu.enable = true;
+    #amdgpu.enable = true;
     intel.enable = true;
-    nvidia.enable = false;
-    nvidia-prime = {
-      enable = false;
-      intelBusID = "";
-      nvidiaBusID = "";
-    };
+    #nvidia.enable = false;
+    # nvidia-prime = {
+    #   enable = false;
+    #   intelBusID = "";
+    #   nvidiaBusID = "";
+    # };
   };
   vm.guest-services.enable = false;
   local.hardware-clock.enable = false;
