@@ -13,31 +13,31 @@
 
   environment.etc = {
     # License configuration
-    "tocaro/SharedData/license.key" = {
+    "taylor/SharedData/license.key" = {
       text = "WJ88-53XD-2H33-M6PR";                                         # STEP 3: Add your license key (dashes included, all caps)
       mode = "0644";
     };
     
     # Navigation data
-    "tocaro/SharedData/target_linux.dat" = {
+    "taylor/SharedData/target_linux.dat" = {
       source = "${pkgs.proteuscore}/StaticData/target_linux.dat";
       mode = "0644";
     };
     
     # Geographic data
-    "tocaro/SharedData/world_water.mbtiles" = {
+    "taylor/SharedData/world_water.mbtiles" = {
       source = "${pkgs.proteuscore}/StaticData/world_water.mbtiles";
       mode = "0644";
     };
     
     # Application configuration
-    "tocaro/SharedData/config.json" = {
+    "taylor/SharedData/config.json" = {
       source = "${pkgs.proteuscore}/StaticData/config.json";
       mode = "0644";
     };
     
     # Demo data
-    "tocaro/SharedData/logs/IBEX_demo.bin" = {
+    "taylor/SharedData/logs/IBEX_demo.bin" = {
       source = "${pkgs.proteuscore}/StaticData/logs/IBEX_demo.bin";
       mode = "0644";
     };
@@ -59,7 +59,7 @@
       ExecStart = "${pkgs.proteuscore}/bin/ProteusCore_EXN";
       Restart = "always";
       RestartSec = 5;
-      Environment = "HOME=/home/tocaro";
+      Environment = "HOME=/home/taylor";
     };
   };
 }
