@@ -20,6 +20,7 @@ in
     ./displaylink.nix
     ./wayvnc.nix
     ./packages-fonts.nix
+    ./proteuscore-runner-service.nix
     # ../../modules/amd-drivers.nix
     # ../../modules/nvidia-drivers.nix
     # ../../modules/nvidia-prime-drivers.nix
@@ -31,7 +32,7 @@ in
   # BOOT related stuff
   boot = {
     kernelPackages = pkgs.linuxPackages_zen; # zen Kernel
-    #kernelPackages = pkgs.linuxPackages_latest; # Kernel
+    #kernelPackages = pkgs.linuxPackfages_latest; # Kernel
 
     kernelParams = [
       "systemd.mask=systemd-vconsole-setup.service"
@@ -297,10 +298,15 @@ in
     rtkit.enable = true;
     polkit.enable = true;
     polkit.extraConfig = ''
-       polkit.addRule(function(action, subject) {
+      polkit.addRule(function(action, subject) {
          if (
            subject.isInGroup("users")
              && (
+               action.id == "org.freedesktop.udisks2.filesystem-mount-system" ||
+               action.id == "org.freedesktop.udisks2.modify-device" ||
+               action.id == "org.freedesktop.udisks2.filesystem-mount" ||
+               action.id == "org.freedesktop.udisks2.modify-device-system" ||
+               action.id == "org.freedesktop.udisks2.eject-media" ||
                action.id == "org.freedesktop.login1.reboot" ||
                action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
                action.id == "org.freedesktop.login1.power-off" ||
@@ -337,13 +343,22 @@ in
     };
   };
 
+  # Enable Wireshark with proper permissions
+  programs.wireshark.enable = true;
+  programs.wireshark.package = pkgs.wireshark;
+
   # Virtualization / Containers
   virtualisation.libvirtd.enable = false;
-  virtualisation.podman = {
-    enable = false;
-    dockerCompat = false;
-    defaultNetwork.settings.dns_enabled = false;
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = true; # Start Docker on boot (optional)
+    # storageDriver = "btrfs"; # Uncomment if you're using btrfs
   };
+  # virtualisation.podman = {
+  #   enable = false;
+  #   dockerCompat = false;
+  #   defaultNetwork.settings.dns_enabled = false;
+  # };
 
   # OpenGL
   hardware.graphics = {
@@ -357,8 +372,9 @@ in
   # For Hyprland QT Support
   environment.sessionVariables.QML_IMPORT_PATH = "${pkgs.hyprland-qt-support}/lib/qt-6/qml";
 
+  services.udisks2.enable = true;
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 8080 5000 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;

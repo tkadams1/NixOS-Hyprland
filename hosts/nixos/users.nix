@@ -22,6 +22,8 @@ in
         "video" 
         "input" 
         "audio"
+        "disk"
+        "wireshark"
       ];
 
     # define user packages here

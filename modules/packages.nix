@@ -132,12 +132,9 @@
     killall
     kdePackages.qt6ct
     kdePackages.qtwayland
-    kdePackages.qtstyleplugin-kvantum # kvantum
     lazydocker
     libappindicator
     libnotify
-    libsForQt5.qtstyleplugin-kvantum # kvantum
-    libsForQt5.qt5ct
     (mpv.override { scripts = [ mpvScripts.mpris ]; }) # with tray
     nvtopPackages.full
     openssl # required by Rainbow borders
@@ -206,6 +203,15 @@
     luarocks
     nh
     vscode
+    gh
+
+    #Disk Utilities
+    gnome-disk-utility
+    gparted
+
+    #Tocaro Blue
+    postman
+    wireshark
 
     # Virtuaizaiton
     virt-viewer
